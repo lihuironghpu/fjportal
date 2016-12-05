@@ -1,0 +1,12 @@
+{
+  "totalRecords": 12,
+  "total": 3,
+  "list":
+        [
+          {"idNo":"product001","imgSrc":"img/support/bank01.jpg","titleText":"产品1产品1产品1产品1-产品1","applyNum":"31","rate":"1%-10%","money":"1万－1,000万","guaranteeType":"信保基金","time":"3个月－12个月"},
+          {"idNo":"product002","imgSrc":"img/support/bank02.jpg","titleText":"产品2产品1产品1产品1-产品1","applyNum":"20","rate":"1%-10%","money":"1万－500万","guaranteeType":"质押","time":"1个月－12个月"},
+          {"idNo":"product003","imgSrc":"img/support/bank03.jpg","titleText":"产品3产品1产品1产品1-产品1","applyNum":"19","rate":"1%-10%","money":"300万－500万","guaranteeType":"一般保障","time":"12个月－24个月"},
+          {"idNo":"product004","imgSrc":"img/support/bank04.jpg","titleText":"产品4产品1产品1产品1-产品1","applyNum":"18","rate":"1%-10%","money":"1万－100万","guaranteeType":"抵押","time":"1个月－36个月"},
+          {"idNo":"product005","imgSrc":"img/support/bank05.jpg","titleText":"产品5产品1产品1产品1-产品1","applyNum":"10","rate":"1%-10%","money":"500万－1,000万","guaranteeType":"信用","time":"1个月－3个月"}
+        ]
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融办－企业信息管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">金融办个人中心</a></li>
+        <li><a href="">企业信息管理</a></li>
+        <li class="active">企业信息管理</li>
+    </ol>
+    <div class="search_input">
+        <form class="form-horizontal row" id="searchFrom" role="form" onsubmit="return false;">
+            <div class="form-group col-xs-6">
+                <label for="qymc" class="col-sm-3 control-label">企业名称：</label>
+                <div class="col-sm-9">
+                    <input class="form-control" id="qymc" name="qymc" type="text" maxlength="8" placeholder="">
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="sssq" class="col-sm-3 control-label">所属区域：</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="sssq" name="sssq">
+                        <option vlaue=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="ssxq" class="col-sm-3 control-label">所属县区：</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="ssxq" name="ssxq">
+                        <option vlaue=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="hyfl" class="col-sm-3 control-label">行业分类：</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="hyfl" name="hyfl">
+                        <option vlaue=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="text-center col-xs-12">
+                <button id="searchBtn" class="btn btn-default">查询</button>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="search_result">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>企业编号</th>
+                    <th>企业名称</th>
+                    <th>注册地址</th>
+                    <th>组织机构代码/统一社会信用代码</th>
+                    <th>行业分类</th>
+                    <th>所属区域</th>
+                    <th>所属县区</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>XX企业</td>-->
+                    <!--<td>XX路XX</td>-->
+                    <!--<td>09290191</td>-->
+                    <!--<td>农业</td>-->
+                    <!--<td>福州市</td>-->
+                    <!--<td>XX县</td>-->
+                    <!--<td><a href="zfbmEntSettingDetail.html">详情</a> <a href="">锁定</a> <a href="">解锁</a> <a href="">重置密码</a></td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+        <div id="kkpager"></div>
+    </div>
+
+
+</div>
+<script src="../js/framework/jquery.min.js"></script>
+<script src="../js/framework/bootstrap.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/plugin/kkpager.min.js"></script>
+<script src="../js/common.js"></script>
+
+
+
+<script>
+
+    $(document).ready(function(){
+        //初始化日期插件
+        dataPiker();
+
+        //查询成功执行方法
+        var successFun = function(data,postData){
+            alert(JSON.stringify(data));
+            requestObj.searchObj.totalPage =  data.body.totalPageNo;//总页码
+            requestObj.searchObj.recordsTotal = data.body.totalCount;//总记录数目
+            requestObj.initPager(
+                    requestObj.address.zfbmEntSetting,
+                    successFun
+            );
+
+            //更新列表
+            $(".search_result tbody").empty();
+            for(var i = 0 ; i < data.body.data.length ; i ++ ){
+                $(".search_result tbody").append(
+                        "<tr><td>" + data.body.data[i].qybh + "</td>" +
+                        "<td>" + data.body.data[i].qymc + "</td>" +
+                        "<td>" + data.body.data[i].zcdz + "</td>" +
+                        "<td>" + data.body.data[i].yhbh + "</td>" +
+                        "<td>" + data.body.data[i].hyfl + "</td>" +
+                        "<td>" + data.body.data[i].sssq + "</td>" +
+                        "<td>" + data.body.data[i].ssxq + "</td>" +
+                        "<td><a href=zfbmEntSettingDetail.html?pageIndex=1&pageSize=10&qybh="+data.body.data[i].qybh+">详情</a></td>" +
+                        "</tr>"
+                )
+            }
+        };
+
+        //进入页面默认查询数据
+        requestObj.searchServer(
+                requestObj.address.zfbmEntSetting,
+                "searchFrom",
+                successFun
+        );
+
+        //初始化市区数据
+        requestObj.initCity();
+
+        //给查询按钮绑定查询事件
+        $("#searchBtn").click(function(){
+            requestObj.searchObj.postData.pageIndex = "1";
+            requestObj.searchServer(
+                    requestObj.address.zfbmEntSetting,
+                    "searchFrom",
+                    successFun
+            );
+        });
+
+    })
+
+</script>
+</body>
+</html>

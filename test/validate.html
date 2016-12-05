@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery PlugIn - 表单验证插件实例 Validate </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="../js/framework/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/plugin/jquery.validate.js"></script>
+    <style type="text/css">
+        * { font-family: Verdana; font-size:13px; }
+        input[type='text']{width:200px;}
+        textarea{width:155px;}
+        .title{float:left;width:10em}
+        em.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+        .field_notice{display:none;}
+        .checking{display:none;}
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#commentForm").validate({
+                errorPlacement: function(error, element){
+                    var error_td = element.next('em');
+                    error_td.find('.field_notice').hide();
+                    error_td.append(error);
+                },
+                success: function(label){
+                    label.addClass('validate_right').text('OK!');
+                },
+                onkeyup: false,
+                rules: {
+                    name: {
+                        required:true,
+                        minlength:3,
+                        maxlength:40,
+//                        remote:{
+//                            url :'index.php?ajax=1',
+//                            type:'get',
+//                            data:{
+//                                name : function(){
+//                                    return $('#name').val();
+//                                }
+//                            },
+//                            beforeSend:function(){
+//                                var _checking = $('#checking');
+//                                _checking.prev('.field_notice').hide();
+//                                _checking.next('label').hide();
+//                                $(_checking).show();
+//                            },
+//                            complete :function(){
+//                                $('#checking').hide();
+//                            }
+//                        }
+                    },
+                    email: {required: true, email: true },
+                    url:{required:true,url:true},
+                    text:"required"
+                },
+                messages: {
+                    name: {required:"需要输入名称", minlength:"名称长度在3-40个字符之间", maxlength:"名称长度在3-40个字符之间",remote:"用户名已存在"},
+                    email: {required:"需要输入电子邮箱", email:"电子邮箱格式不正确"},
+                    url: {required:"需要输入URL地址", url:"URL地址格式不正确"},
+                    text:"需要输入文本内容"
+                },
+            });
+        });
+    </script>
+</head>
+<body>
+<form id="commentForm" method="get" action="" >
+    <fieldset>
+        <legend>表单验证</legend>
+        <p><label class="title" >Name</label><input id="name" name="name"/>
+            <em><label class="field_notice"></label><label id="checking" class="checking">检查中...</label></em>
+        </p>
+        <p><label class="title" >E-Mail</label><input name="email"/>
+            <em><label class="field_notice"></label></em>
+        </p>
+        <p><label class="title" >URL</label><input name="url"/>
+            <em><label class="field_notice"></label></em>
+        </p>
+        <p><label class="title" >text</label><textarea name="text" cols="22"></textarea>
+            <em><label class="field_notice"></label></em>
+        </p>
+        <p><input class="submit" type="submit" value="提交"/></p>
+    </fieldset>
+</form>
+</body>
+</html>

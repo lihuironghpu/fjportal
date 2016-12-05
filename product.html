@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融创新服务平台</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/static.css">
+    <link rel="stylesheet" href="css/kkpager_green.css">
+</head>
+<body>
+<div class="header"></div>
+<div class="nav main_menu">
+    <div class="container">
+        <a href="index.html">首页</a><a href="policyGuide.html">政策指南</a><a href="product.html" class="active">金融产品</a><a href="institution.html">金融机构</a><a href="contactUs.html">联系我们</a><a href="index.html#loginMenu">个人中心</a>
+    </div>
+</div>
+<div class="container">
+    <!-- 当前位置-->
+    <div class="nav guide_menu">
+        <a href="index.html">首页</a><a href="">金融产品</a>
+    </div>
+    <div class="product_list">
+        <div class="section product_search">
+            <form action="" role="form" id="searchFrom" onsubmit="return false;">
+                <div class="like_search">
+                        <label for="jgmc">机构名称：</label>
+                        <input id="jgmc" type="text"  name="jgmc" placeholder="机构名称"/>&nbsp;&nbsp;
+                        <label for="cpmc">产品名称：</label>
+                        <input id="cpmc" type="text"  name="cpmc" placeholder="产品名称"/>&nbsp;&nbsp;
+                        <button class="search-btn">搜索</button>
+                </div>
+                <ul>
+                    <li class="clearfix">
+                        <p>贷款期限：</p>
+                        <div class="nav" id="dkqxContainer">
+                            <!--<a class="active">-->
+                                <!--<input type="radio" id="dkqx" name="dkqx"/>-->
+                                <!--<label for="dkqx">3个月及以下</label>-->
+                            <!--</a>-->
+
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <p>担保方式：</p>
+                        <div class="nav" id="dbfsContainer">
+                            <!--<a class="active">-->
+                                <!--<input type="radio" id="dbfs1" name="dbfs"/>-->
+                                <!--<label for="dbfs1">不限</label>-->
+                            <!--</a>-->
+
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <p>贷款额度：</p>
+                        <div class="nav" id="dkedContainer">
+                            <!--<a class="active">-->
+                                <!--<input type="radio" id="dked1" name="dked"/>-->
+                                <!--<label for="dked1">不限</label>-->
+                            <!--</a>-->
+                        </div>
+
+                    </li>
+                </ul>
+            </form>
+
+        </div>
+        <div class="section product_search_result">
+            <div class="header">
+                <span>搜索结果</span>
+            </div>
+            <div class="result_list">
+                <!--<dl>-->
+                    <!--<dt class="clearfix">-->
+                        <!--<div class="img_box">-->
+                            <!--<img src="img/support/bank01.jpg" alt=""/>-->
+                        <!--</div>-->
+                        <!--<h3>工商银行－工行信保贷</h3>-->
+                        <!--<p>-->
+                            <!--<span>31</span>-->
+                            <!--企业申请-->
+                        <!--</p>-->
+                    <!--</dt>-->
+                    <!--<dd class="clearfix">-->
+                        <!--<div class="rate_box">-->
+                            <!--<p> 1%-10%</p>-->
+                            <!--<p class="label">-->
+                                <!--参考利率范围-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div class="money_box">-->
+                            <!--<p>1万－1,000万</p>-->
+                            <!--<p class="label">-->
+                                <!--贷款额度-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div class="type_box">-->
+                            <!--<p>信保基金</p>-->
+                            <!--<p class="label">-->
+                                <!--担保方式-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div class="time_box">-->
+                            <!--<p>6个月－12个月</p>-->
+                            <!--<p class="label">-->
+                                <!--贷款期限-->
+                            <!--</p>-->
+                        <!--</div>-->
+                        <!--<div class="btn_box">-->
+                            <!--<a href="productDetail.html">详情</a>-->
+                        <!--</div>-->
+                    <!--</dd>-->
+                <!--</dl>-->
+            </div>
+            <div class="footer">
+                <div id="kkpager"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>COPYRIGHT 2015 www.XXX.gov.cn All Rights Reserved. </p>
+    <p>版权所有：XXX</p>
+</div>
+<script src="js/framework/jquery.min.js"></script>
+<script src="js/framework/bootstrap.min.js"></script>
+<script src="js/plugin/kkpager.min.js"></script>
+<script src="js/common.js"></script>
+
+<!--[if lte IE 8]>
+<script src="js/response.js"></script>
+<![endif]-->
+<script>
+
+    $(document).ready(function(){
+
+
+
+        //查询成功执行方法
+        var successFun = function(data,postData){
+            requestObj.searchObj.totalPage =  data.body.totalPageNo;//总页码
+            requestObj.searchObj.recordsTotal = data.body.totalCount;//总记录数目
+            requestObj.initPager(
+                    requestObj.address.entProductSearch,
+                    successFun
+            );
+            //更新列表
+            $(".result_list").empty();
+            for(var i = 0 ; i < data.body.data.length ; i ++ ){
+            	var dbfsStr ;
+                if(data.body.data[i].dbfs=='1'){
+                	dbfsStr = "政策性融资担保" ;
+                }else if(data.body.data[i].dbfs=='2'){
+                	dbfsStr ="抵押" ;
+                }else if(data.body.data[i].dbfs=='3'){
+                	dbfsStr ="质押" ;
+                }else if(data.body.data[i].dbfs=='4'){
+                	dbfsStr ="一般保证" ;
+                }else{
+                	dbfsStr ="信用" ;
+                }
+                $(".result_list").append(
+                    "<dl>"+
+                        "<dt class='clearfix'>" +
+                            "<div class='img_box'>" +
+                                "<img src='img/support/bank01.jpg' alt='"+ data.body.data[i].cpmc +"'/>" +
+                            "</div>" +
+                            "<h3>" + data.body.data[i].cpmc + "</h3>" +
+//                            "<p><span>" + 31 + "</span> 企业申请</p>" +
+                        "</dt>" +
+                        "<dd class='clearfix'>" +
+                            "<div class='rate_box'>" +
+                                "<p>" + data.body.data[i].cklls +"%-"+data.body.data[i].cklle+"%" +"</p>" +
+                                "<p class='label'>参考利率范围</p>" +
+                            "</div>" +
+                            "<div class='money_box'>" +
+                                "<p>" + data.body.data[i].dkeds +"万元-"+data.body.data[i].dkede+ "万元" +"</p>" +
+                                "<p class='label'>贷款额度</p>" +
+                            "</div>" +
+                            "<div class='type_box'>" +
+                                "<p>" + dbfsStr +"</p>" +
+                                "<p class='label'>担保方式</p>" +
+                            "</div>" +
+                            "<div class='time_box'>" +
+                                "<p>" + data.body.data[i].dkqx +"个月</p>" +
+                                "<p class='label'>贷款期限</p>" +
+                            "</div>" +
+                            "<div class='btn_box'>" +
+                                "<a class='btn btn-default' href='productDetail.html?pageIndex=1&pageSize=10&jgbh="+ data.body.data[i].jgbh +"'>详情</a>" +
+                            "</div>" +
+                        "</dd>"+
+                    "</dl>"
+                );
+
+            }
+            
+        };
+
+
+        //进入页面默认查询数据
+        requestObj.searchServer(
+                requestObj.address.entProductSearch,
+                "searchFrom",
+                successFun
+        );
+        //查询成功字典后执行的初始化到页面及绑定点击事件
+        function setSearch(data,radioName){
+            $("#" + radioName+ "Container").empty();
+            $("#" + radioName+ "Container").append(
+                "<a class='active'>" +
+                    "<input type='radio' id='" + radioName + "' name='" + radioName + "' value=''/>" +
+                    "<label for='" + radioName + "'>全部</label>" +
+                "</a>"
+            );
+            for(var i = 0 ; i < data.body.data.length; i ++ ){
+                $("#" + radioName+ "Container").append(
+                        "<a>" +
+                        "<input type='radio' id='" + radioName + i +  "' name='" + radioName + "' value='" + data.body.data[i].sjbh + "'/>" +
+                        "<label for='" + radioName + i +  "'>" + data.body.data[i].sjmc + "</label>" +
+                        "</a>"
+                );
+            }
+            //点选条件
+            $("#" + radioName+ "Container input").click(function(){
+                $(this).parent().parent().children("a").removeClass("active");
+                $(this).parent().addClass("active");
+                requestObj.searchObj.postData.pageIndex = "1";
+                requestObj.searchServer(
+                        requestObj.address.entProductSearch,
+                        "searchFrom",
+                        successFun
+                );
+            });
+        }
+
+        //字典查询成功
+        var getDicSuccess = function(data,postData){
+            var radioName = "";
+            if(data.body.data[0].zdlxbh == "10001"){
+                radioName = "dkqx";
+            }else if(data.body.data[0].zdlxbh == "10005"){
+                radioName = "dbfs";
+            }else if(data.body.data[0].zdlxbh == "10006"){
+                radioName = "dked";
+            }else{}
+            setSearch(data,radioName)
+        };
+
+        //初始化选择数据
+        //贷款期限
+        requestObj.ajaxServer(requestObj.address.dicQuery, {"zdlxbh": "10001","pageIndex": 1,"pageSize": 10}, getDicSuccess);
+        //担保方式
+        requestObj.ajaxServer(requestObj.address.dicQuery, {"zdlxbh": "10005","pageIndex": 1,"pageSize": 10}, getDicSuccess);
+        //贷款额度
+        requestObj.ajaxServer(requestObj.address.dicQuery, {"zdlxbh": "10006","pageIndex": 1,"pageSize": 10}, getDicSuccess);
+
+        //给查询按钮绑定查询事件
+        $("#searchBtn").click(function(){
+            requestObj.searchObj.postData.pageIndex = "1";
+            requestObj.searchServer(
+                    requestObj.address.entProductSearch,
+                    "searchFrom",
+                    successFun
+            );
+
+        });
+    })
+
+</script>
+</body>
+</html>

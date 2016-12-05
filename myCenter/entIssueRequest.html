@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>企业－发布需求</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a href="">企业个人中心</a></li>
+            <li><a href="">发布需求</a></li>
+            <li class="active">发布需求</li>
+        </ol>
+        <div class="form_add">
+            <form method="post" id="issueRequestForm" action=""></form>
+            <div class="form form-horizontal row" role="form">
+
+                <div class="form-group col-xs-6">
+                    <label for="" class="col-sm-4 control-label">企业名称：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static"><a href="">某某企业</a></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="" class="col-sm-4 control-label">所属市区：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">XX市</p>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-6">
+                    <label for="" class="col-sm-4 control-label">所属县区：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">XX县</p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-8 control-label">组织机构代码/统一社会信用代码：</label>
+                    <div class="col-sm-4">
+                        <p class="form-control-static">02020SSii</p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-4 control-label">融资金额：</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <input class="form-control" type="text" maxlength="8" placeholder="">
+                            <div class="input-group-addon">万</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-4 control-label">融资期限：</label>
+                    <div class="col-sm-8">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-4 control-label">担保方式：</label>
+                    <div class="col-sm-8">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-4 control-label">融资用途：</label>
+                    <div class="col-sm-8">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-4 control-label">指定融资机构：</label>
+                    <div class="col-sm-8">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-4 control-label">指定担保机构：</label>
+                    <div class="col-sm-8">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-4 control-label">承保金额：</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <input class="form-control" type="text" maxlength="20" placeholder="">
+                            <div class="input-group-addon">元</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                </div>
+                <div class="form-group col-xs-12">
+                    <label for="inputEmail3" class="col-sm-2 control-label">项目情况：</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label for="inputEmail3" class="col-sm-2 control-label">备注：</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="text-center col-xs-12 btn_container">
+                    <button type="submit" class="btn btn-default btn_save" data-value="1">暂存</button>
+                    <button type="submit" class="btn btn-primary btn_issue" data-value="2">发布</button>
+
+                </div>
+
+
+            </div>
+            </form>
+
+        </div>
+    </div>
+    <script src="../js/framework/jquery.min.js"></script>
+    <script src="../js/framework/bootstrap.min.js"></script>
+    <script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+    <script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../js/plugin/kkpager.min.js"></script>
+    <script src="../js/common.js"></script>
+
+
+
+    <script>
+        $(document).ready(function(){
+            //初始化日期插件
+            dataPiker();
+
+
+            //点击暂存或者发布
+            $(".btn_container button").click(function() {
+                //封装报文  todo
+                //发送请求  todo
+                $.ajax({
+                    url: requestObj.port + requestObj.address.register,
+                    type: "POST",
+                    contentType: 'application/json',
+                    dataType: "json",
+                    data: JSON.stringify(registerObj),
+                    timeout: requestObj.timeoutTime,
+                    beforeSend: function () {
+                        pluginObj.showLoading();
+                    },
+                    success: function (data) {
+                        alert(JSON.stringify(data));
+                        if (data.head["_rd"] == "000000") {
+                            //请求成功处理逻辑
+                            $(".step1").hide();
+                            $(".step2").hide();
+                            $(".presentation").eq(1).removeClass("active");
+                            $(".presentation").eq(2).removeClass("active");
+                            $(".presentation").eq(3).addClass("active");
+                            $(".step3").show();
+                        } else {
+                            //请求失败提示
+                            pluginObj.alert("_rd", "_rm");
+                        }
+                    },
+                    error: function (data, statue) {
+                        pluginObj.alert("", data.statusText);
+                    },
+                    complete: function (data, status) {
+                        pluginObj.hideLoading();
+                    }
+                });
+            })
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融创新服务平台</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/static.css">
+</head>
+<body>
+<div class="header"></div>
+<div class="nav main_menu">
+    <div class="container">
+        <a href="index.html">首页</a><a href="policyGuide.html">政策指南</a><a href="product.html" class="active">金融产品</a><a href="institution.html">金融机构</a><a href="contactUs.html">联系我们</a><a href="index.html#loginMenu">个人中心</a>
+    </div>
+</div>
+<div class="container">
+    <!-- 当前位置-->
+    <div class="nav guide_menu">
+        <a href="index.html">首页</a><a href="product.html">金融产品</a><a href="">产品申请信息录入</a>
+    </div>
+    <div class="section product_detail">
+        <form>
+        <div class="">
+            <div class="col_row">
+                <div class="label_control">企业名称：</div>
+                <div class="text_control">
+                    福建省XX有限公司
+                </div>
+                <div class="label_control">三证合一证：</div>
+                <div class="text_control">
+                    7000999
+                </div>
+            </div>
+            <div class="col_row">
+                <div class="label_control">所属区域：</div>
+                <div class="text_control">
+                    高新区
+                </div>
+                <div class="label_control">金融产品编号：</div>
+                <div class="text_control">
+                    18962333750
+                </div>
+            </div>
+            <div class="col_row">
+                <div class="label_control">金融产品名称：</div>
+                <div class="text_control">
+                    为扶持创新型企
+                </div>
+                <div class="label_control">金融机构：</div>
+                <div class="text_control">
+                    为扶持创新型企
+                </div>
+            </div>
+            <div class="col_row">
+                <div class="label_control">利率范围：</div>
+                <div class="input_control">
+                    <input type="text" name="startRate" style="width: 80px;" maxlength="5"/> ％－<input type="text" style="width: 80px;" name="endRate" maxlength="5"/> %
+                </div>
+                <div class="label_control">贷款期限：</div>
+                <div class="input_control">
+                    <input type="text" name="timeLimit"/> 月
+                </div>
+            </div>
+            <div class="col_row">
+                <div class="label_control">担保方式：</div>
+                <div class="input_control">
+                    <select name="betType" id="" style="width: 200px;height: 30px;line-height: 30px;">
+                        <option value="001">方式1</option>
+                        <option value="002">方式2</option>
+                        <option value="003">方式3</option>
+                    </select>
+                </div>
+                <div class="label_control">贷款额度：</div>
+                <div class="input_control">
+                    <input type="text" name="loanLimit" id="loanLimit"/> 万
+                </div>
+            </div>
+            <div class="col_row">
+                <div class="label_control">金额大写：</div>
+                <div class="text_control" id="moneyUpperCase">
+
+                </div>
+            </div>
+            <div class="col_row">
+                <div class="label_control">贷款用途：</div>
+                <div class="input_control textarea_control">
+                        <textarea name="loanUse"></textarea>
+                </div>
+            </div>
+            <div class="col_row">
+                <div class="label_control">项目情况：</div>
+                <div class="input_control textarea_control">
+                    <textarea name="projectState"></textarea>
+                </div>
+            </div>
+            <div class="col_row">
+                <div class="label_control">备注：</div>
+                <div class="input_control textarea_control">
+                    <textarea name="remarks"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="nav">
+                <a class="btn_default">取消</a><button class="btn_primary">确定</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <p>COPYRIGHT 2015 www.XXX.gov.cn All Rights Reserved. </p>
+    <p>版权所有：XXX</p>
+</div>
+<script src="js/framework/jquery.min.js"></script>
+<script src="js/framework/bootstrap.min.js"></script>
+<script src="js/common.js"></script>
+<!--[if lte IE 8]>
+<script src="js/response.js"></script>
+<![endif]-->
+<script>
+    $(document).ready(function(){
+        //点击取消
+        $(".product_detail nav a").eq(0).click(function(){
+            window.history.back();
+        });
+        //金额转大写
+        $("#loanLimit").blur(function(){
+            $("#moneyUpperCase").html(moneyToUpperCase($(this).val()*10000));
+        })
+    });
+</script>
+</body>
+</html>

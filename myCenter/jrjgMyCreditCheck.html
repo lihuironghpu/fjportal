@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>企业－企业信息修改</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">金融机构个人中心</a></li>
+        <li><a href="">我的授信</a></li>
+        <li class="active">授信审核</li>
+    </ol>
+    <!-- 企业基本信息-->
+    <div class="panel panel-default">
+        <div class="panel-heading">审核信息<span class="fr glyphicon glyphicon-collapse-down"></span></div>
+        <div class="panel-body">
+            <div class="form form-horizontal row" role="form">
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">企业名称：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="qymc"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-6 control-label">组织机构代码/统一社会信用代码：</label>
+                    <div class="col-sm-6">
+                        <p class="form-control-static" id="qybh"></p>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">所属市区：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="sssq"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">所属区县：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="ssxq"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">融资金额(万)：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="rzje"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">融资期限：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="rzqx"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">利率范围：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="llfw"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">发布日期：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="fbrq"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">融资用途：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="rzyt"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">担保方式：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="dbfs"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="dbjg" class="col-sm-4 control-label">担保机构：</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="dbjg" name="dbjg">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-6">
+                    <label for="cbje" class="col-sm-4 control-label">承保金额：</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <input class="form-control" id="cbje" name="cnje" type="text" maxlength="8" placeholder="">
+                            <div class="input-group-addon">万</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="col-sm-4 control-label">需求编号：</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static" id="xqbh"></p>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-2 control-label">项目情况：</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" id="xmqk"></p>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-sm-2 control-label">备注：</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" id="ext1"></p>
+                    </div>
+                </div>
+
+                <div class="text-center col-xs-12">
+                    <a class="btn btn-default" href="jrjgMyCredit.html">返回</a>
+                    <button type="submit" class="btn btn-primary ml10 mr10">审核通过</button>
+                    <button type="submit" class="btn btn-danger">审核不通过</button>
+
+                </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 历史审批记录-->
+    <div class="panel panel-default">
+        <div class="panel-heading">历史审批记录<span class="fr glyphicon glyphicon-collapse-down"></span></div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>机构名称</th>
+                        <th>处理时间</th>
+                        <th>需求状态</th>
+                        <th>利率范围</th>
+                        <th>操作</th>
+                        <th>操作人</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>jigou1</td>
+                        <td>2016-10-10 09:30:20</td>
+                        <td>已关注</td>
+                        <td>1%－10%</td>
+                        <td>w</td>
+                        <td>张三</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../js/framework/jquery.min.js"></script>
+    <script src="../js/framework/bootstrap.min.js"></script>
+    <script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+    <script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../js/plugin/kkpager.min.js"></script>
+    <script src="../js/common.js"></script>
+
+
+
+    <script>
+        $(document).ready(function(){
+            //面板折叠
+            $(".panel-heading").click(function(){
+                $(this).next().slideToggle();
+                console.log($(this).children("span").attr("class"));
+                $(this).children("span").attr("class") == "fr glyphicon glyphicon-collapse-down"
+                        ? $(this).children("span").attr("class","fr glyphicon glyphicon-collapse-up")
+                        : $(this).children("span").attr("class","fr glyphicon glyphicon-collapse-down");
+            });
+            //初始化日期插件
+            dataPiker();
+
+            var pageObj = {
+                pno : 1,//当前页
+                total : 2,//总页码
+                totalRecords: 12//总记录数目
+            };
+            initPager();
+
+            //生成分页控件
+            function initPager(){
+                kkpager.generPageHtml({
+                    isShowFirstPageBtn: false,
+                    isShowLastPageBtn: false,
+                    isGoPage: false,
+                    pno : pageObj.pno,
+                    mode : 'click', //设置为click模式
+                    //总页码
+                    total : pageObj.total,
+                    //总数据条数
+                    totalRecords : pageObj.totalRecords,
+                    //点击页码、页码输入框跳转、以及首页、下一页等按钮都会调用click
+                    //适用于不刷新页面，比如ajax
+                    click : function(n){
+                        //处理完后可以手动条用selectPage进行页码选中切换 todo
+                        $.ajax({
+
+                        });
+
+
+                    }
+
+                });
+            }
+        });
+
+
+
+    </script>
+</body>
+</html>

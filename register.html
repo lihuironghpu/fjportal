@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融创新服务平台</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="css/kkpager_green.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/static.css"/>
+</head>
+<body>
+    <div class="header"></div>
+
+    <div class="nav main_menu">
+        <div class="container">
+            <a href="index.html" class="active">首页</a><a href="policyGuide.html">政策指南</a><a href="product.html">金融产品</a><a href="institution.html">金融机构</a><a href="contactUs.html">联系我们</a><a href="index.html#loginMenu">个人中心</a>
+        </div>
+    </div>
+    <div class="container mb30">
+        <!-- 当前位置-->
+        <div class="nav guide_menu">
+            <a href="index.html">首页</a><a href="">企业注册</a>
+        </div>
+        <ul class="nav nav-tabs nav-justified step_guide" role="tablist">
+            <li class="presentation">
+                <a><span class="glyphicon glyphicon-play-circle"></span> 开始</a>
+            </li>
+            <li class="presentation active">
+                <a><span class="glyphicon glyphicon-user"></span> 帐号信息</a>
+            </li>
+            <li class="presentation">
+                <a><span class="glyphicon glyphicon-list-alt"></span> 基本信息及财务信息</a>
+            </li>
+            <li class="presentation">
+                <a><span class="glyphicon glyphicon-edit"></span> 市金融办审批</a>
+            </li>
+            <li class="presentation">
+                <a><span class="glyphicon glyphicon-ok-circle"></span> 结束</a>
+            </li>
+        </ul>
+        <p class="text-right mb20">已有账号？立即<a href="index.html#loginMenu">登录</a></p>
+
+            <div class="step1">
+                <form id="accountForm" method="post" action="">
+                    <!-- 帐号信息-->
+                    <div class="panel panel-default">
+                        <!--<div class="panel-heading">帐号信息<span class="fr glyphicon glyphicon-collapse-down"></span></div>-->
+                        <div class="panel-body">
+                            <div class="form form-horizontal row" role="form">
+
+
+                                <div class="form-group col-xs-12">
+                                    <label for="orgCode" class="col-sm-4 control-label">组织机构代码/统一社会信用代码：</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" id="orgCode" name="orgCode" type="text" maxlength="11" placeholder="11位组织机构代码／统一社会信用代码">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static text-danger">* <span></span></p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="mobile" class="col-sm-4 control-label">联系人手机：</label>
+                                    <div class="col-sm-2 pr0">
+                                        <input class="form-control" id="mobile" name="mobile" type="text" maxlength="11" placeholder="11位手机号">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a class="btn btn-primary" style="width: 100%">获取验证码</a>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static text-danger">* <span></span></p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="verifyCode" class="col-sm-4 control-label">手机验证码：</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" id="verifyCode" name="verifyCode" type="text" maxlength="6" placeholder="请输入手机验证码">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static text-danger">* <span></span></p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="contactName" class="col-sm-4 control-label">联系人姓名：</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" id="contactName" name="contactName" type="text" maxlength="20" placeholder="请输入联系人姓名">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static text-danger">* <span></span></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-12">
+                                    <label for="pwd" class="col-sm-4 control-label">登录密码：</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" id="pwd" name="pwd" type="password" maxlength="20" placeholder="请输入登录密码">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static text-danger">* <span></span></p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="confirmPwd" class="col-sm-4 control-label">确认密码：</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" id="confirmPwd" name="confirmPwd" type="password" maxlength="20" placeholder="请输入确认密码">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static text-danger">* <span></span></p>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-xs-12">
+                                    <label for="entEmail" class="col-sm-4 control-label">电子邮箱：</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" id="entEmail" name="entEmail" type="text" maxlength="50" placeholder="请输入电子邮箱">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="form-control-static text-danger"> <span></span></p>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group col-xs-12">
+                                    <div class="checkbox col-sm-4 col-sm-offset-4">
+                                            <label>
+                                                <input type="checkbox" id="agreement" name="agreement" value="">
+                                                阅读并接受<a href="">《用户注册协议》</a>
+                                            </label>
+                                    </div>
+                                </div>
+                                <div class="text-center col-xs-12">
+                                    <input class="btn btn-primary next_step_btn" type="submit" value="下一步">
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="step2" style="display: none;">
+            <!--<div class="step2">-->
+
+                <form id="entInfoForm" method="post" action="">
+                    <!-- 企业基本信息-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">企业基本信息<span class="fr glyphicon glyphicon-collapse-down"></span></div>
+                        <div class="panel-body">
+                            <div class="form form-horizontal row" role="form">
+                                <div class="form-group col-xs-6">
+                                    <label for="orgCodeRead" class="col-sm-7 control-label">组织机构代码/统一社会信用代码：</label>
+                                    <div class="col-sm-5">
+                                        <p class="form-control-static" id="orgCodeRead"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="contactNameRead" class="col-sm-4 control-label">联系人姓名：</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static" id="contactNameRead"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="contactMobileRead" class="col-sm-4 control-label">联系人手机：</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static" id="contactMobileRead"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="entEmailRead" class="col-sm-4 control-label">联系人邮箱：</label>
+                                    <div class="col-sm-8">
+                                        <p class="form-control-static" id="entEmailRead"> </p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="entName" class="col-sm-4 control-label required">企业名称：</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" id="entName" name="entName" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="createDate" class="col-sm-4 control-label required">成立时间：</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group date form_date" data-date="" data-date-format="yyyymmdd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                            <input class="form-control" id="createDate" name="createDate" maxlength="8" size="8" type="text" >
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                        <input type="hidden" id="dtp_input3" value="" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-6">
+                                    <label for="city" class="col-sm-4 control-label required">所属市区：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="city" name="city">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="county" class="col-sm-4 control-label required">所属区县：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="county" name="county">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="address" class="col-sm-4 control-label">注册地址：</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" id="address" name="address" maxlength="100">
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="registerMoney" class="col-sm-4 control-label">注册资本：</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" maxlength="10" id="registerMoney" name="registerMoney" placeholder="">
+                                            <div class="input-group-addon">万</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="industry" class="col-sm-4 control-label required">行业分类：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="industry" name="industry">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-6">
+                                    <label for="entNature" class="col-sm-4 control-label required">企业性质：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="entNature" name="entNature">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label for="entLegal" class="col-sm-4 control-label required">法人姓名：</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="entLegal" name="entLegal" type="text" maxlength="20" placeholder="">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-xs-6">
+                                    <label for="entLegalTel" class="col-sm-4 control-label required">法人电话：</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" id="entLegalTel" name="entLegalTel" type="text" maxlength="30" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-12">
+                                    <label for="business" class="col-sm-2 control-label">经营范围：</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="business" name="business" type="text" maxlength="100" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="businessLicence" class="col-sm-2 control-label required">营业执照：</label>
+                                    <div class="col-sm-4">
+                                            <input type="file" id="businessLicence" name="businessLicence">
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="entTypeGYQY" class="col-sm-2 control-label">企业类型：</label>
+                                    <div class="col-sm-10">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="entTypeGYQY" name="entType" value="option1"> 国有企业
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="entTypeSQ" name="entType" value="option2"> 私企
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="entTypeZFBM" name="entType" value="option3"> 政府部门
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="entType3" name="entType" value="option3"> 类型2
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" id="entType4" name="entType" value="option3"> 类型3
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="certificate" class="col-sm-2 control-label">各企业类型相关资质证书：</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" id="certificate">
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="judge" class="col-sm-2 control-label">企业自评：</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="judge" name="judge" rows="3" maxlength="200"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label for="mesCode" class="col-sm-2 control-label required">短信验证码：</label>
+                                    <div class="col-sm-2 pr0">
+                                        <input class="form-control" id="mesCode" name="mesCode" type="text" maxlength="6" placeholder="">
+                                    </div>
+                                    <div class="col-sm-2 pl0">
+                                        <button class="ml10 btn btn-primary step_over_btn">获取验证码</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 企业财务信息-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">企业财务信息<span class="fr glyphicon glyphicon-collapse-down"></span></div>
+                        <div class="panel-body">
+                            <table class="table table-bordered">
+                               <thead>
+                               <tr>
+                                   <th>近三年情况</th>
+                                   <th>2014年</th>
+                                   <th>2015年</th>
+                                   <th>最近一个月</th>
+                               </tr>
+                               </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">资产总额</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="assetRecentTwoYear" name="assetRecentTwoYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="assetRecentOneYear" name="assetRecentOneYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="assetRecentOneMonth" name="assetRecentOneMonth" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">资产总额(大写)</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="assetRecentTwoYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="assetRecentOneYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="assetRecentOneMonthUpper"></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">负债总额</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="debtRecentTwoYear" name="debtRecentTwoYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="debtRecentOneYear" name="debtRecentOneYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="debtRecentOneMonth" name="debtRecentOneMonth" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">负债总额(大写)</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="debtRecentTwoYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="debtRecentOneYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="debtRecentOneMonthUpper"></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">所有者权益</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="rightRecentTwoYear" name="rightRecentTwoYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="rightRecentOneYear" name="rightRecentOneYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="rightRecentOneMonth" name="rightRecentOneMonth" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">所有者权益(大写)</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="rightRecentTwoYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="rightRecentOneYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="rightRecentOneMonthUpper"></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">销售收入</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="saleRecentTwoYear" name="saleRecentTwoYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="saleRecentOneYear" name="saleRecentOneYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="saleRecentOneMonth" name="saleRecentOneMonth" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">销售收入(大写)</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="saleRecentTwoYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="saleRecentOneYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="saleRecentOneMonthUpper"></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">净利润总额</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="rateRecentTwoYear" name="rateRecentTwoYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="rateRecentOneYear" name="rateRecentOneYear" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" id="rateRecentOneMonth" name="rateRecentOneMonth" type="text" maxlength="8" placeholder="">
+                                                <div class="input-group-addon">万</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static">净利润总额(大写)</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="rateRecentTwoYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="rateRecentOneYearUpper"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <p class="form-control-static" id="rateRecentOneMonthUpper"></p>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="text-center col-xs-12">
+                        <button type="submit" class="btn btn-default pre_step_btn">上一步</button>
+                        <button type="submit" class="ml10 btn btn-primary step_over_btn">注册完成</button>
+                    </div>
+                </form>
+            </div>
+            <div class="step3" style="display: none">
+                <img src="img/ok.png" alt="注册成功" height="60 "/> 注册完成，等待市金融办审批！
+            </div>
+
+    </div>
+    <div class="footer">
+        <p>COPYRIGHT 2015 www.XXX.gov.cn All Rights Reserved. </p>
+        <p>版权所有：XXX</p>
+    </div>
+    <!--<div class="modal_container">-->
+        <!--<div class="bg">-->
+
+        <!--</div>-->
+        <!--<div class="loading">-->
+            <!--<img src="img/loading1.gif" alt="加载动画"/>-->
+        <!--</div>-->
+    <!--</div>-->
+    <script src="js/framework/jquery.min.js"></script>
+    <script src="js/framework/bootstrap.min.js"></script>
+    <script src="js/plugin/jquery.validate.js"></script>
+    <script src="js/plugin/validate-extend.js"></script>
+    <script src="js/plugin/respond.js"></script>
+    <script src="js/plugin/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="js/plugin/kkpager.min.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+    $(document).ready(function(){
+        var registerObj = {
+            "yhxx":{},
+            "qyxx":{},
+            "cwxx":[]
+        };
+
+        //面板折叠
+        $(".panel-heading").click(function(){
+            $(this).next().slideToggle();
+            console.log($(this).children("span").attr("class"));
+            $(this).children("span").attr("class") == "fr glyphicon glyphicon-collapse-down"
+                    ? $(this).children("span").attr("class","fr glyphicon glyphicon-collapse-up")
+                    : $(this).children("span").attr("class","fr glyphicon glyphicon-collapse-down");
+        });
+        //点击上一步
+        $(".pre_step_btn").click(function(){
+            $(".step2").hide();
+            $(".presentation").eq(2).removeClass("active");
+            $(".presentation").eq(1).addClass("active");
+            $(".step1").show();
+        });
+        //初始化日期插件
+        dataPiker();
+
+        //点击下一步处理方法
+        function goNextStep(){
+            registerObj.yhxx.zjjgdm = accountForm.orgCode.value;
+            registerObj.yhxx.yhmc = accountForm.orgCode.value;
+            registerObj.yhxx.mm = accountForm.pwd.value;
+            registerObj.yhxx.lxrsjh = accountForm.mobile.value;
+            registerObj.yhxx.lxrxm = accountForm.contactName.value;
+            registerObj.yhxx.dzyx = accountForm.entEmail.value;
+            registerObj.qyxx.lxryx = accountForm.entEmail.value;
+            $(".step1").hide();
+            $(".presentation").eq(1).removeClass("active");
+            $(".presentation").eq(2).addClass("active");
+            $(".step2").show();
+            $("#orgCodeRead").html(registerObj.yhxx.zjjgdm);
+            $("#contactNameRead").html(registerObj.yhxx.lxrxm);
+            $("#contactMobileRead").html(registerObj.yhxx.lxrsjh);
+            $("#entEmailRead").html(registerObj.qyxx.lxryx);
+        }
+
+        //注册完成处理逻辑
+        function submitRegister(){
+
+            registerObj.qyxx.qymc = entInfoForm.entName.value;
+            registerObj.qyxx.clsj = entInfoForm.createDate.value;
+            registerObj.qyxx.sssq = entInfoForm.city.value;
+            registerObj.qyxx.ssxq = entInfoForm.county.value;
+            registerObj.qyxx.zcdz = entInfoForm.address.value;
+            registerObj.qyxx.zczb = entInfoForm.registerMoney.value;
+            registerObj.qyxx.hyfl = entInfoForm.industry.value;
+            registerObj.qyxx.qyxz = entInfoForm.entNature.value;
+            registerObj.qyxx.fddbrXm = entInfoForm.entLegal.value;
+            registerObj.qyxx.fddbrLxfs = entInfoForm.entLegalTel.value;
+            registerObj.qyxx.jyfw = entInfoForm.business.value;
+//            registerObj.qyxx.yyzz = entInfoForm.businessLicence.value;//营业执照 todo 文件上传
+            registerObj.qyxx.qylx = entInfoForm.entType.value;
+//            registerObj.qyxx.gqylxxgzzzs = entInfoForm.certificate.value;//各企业类型相关资质证书 todo 文件上传
+            registerObj.qyxx.qyzp = entInfoForm.judge.value;
+
+            registerObj.cwxx=[
+                {
+                    "zzze": entInfoForm.assetRecentTwoYear.value,
+                    "fzze": entInfoForm.assetRecentTwoYear.value,
+                    "syzqy": entInfoForm.assetRecentTwoYear.value,
+                    "xssr": entInfoForm.assetRecentTwoYear.value,
+                    "jlrze": entInfoForm.assetRecentTwoYear.value,
+                    "nf": (new Date()).getFullYear() - 2
+                },
+                {
+                    "zzze": entInfoForm.assetRecentOneYear.value,
+                    "fzze": entInfoForm.assetRecentOneYear.value,
+                    "syzqy": entInfoForm.assetRecentOneYear.value,
+                    "xssr": entInfoForm.assetRecentOneYear.value,
+                    "jlrze": entInfoForm.assetRecentOneYear.value,
+                    "nf": (new Date()).getFullYear() - 1
+                },
+                {
+                    "zzze": entInfoForm.assetRecentOneMonth.value,
+                    "fzze": entInfoForm.assetRecentOneMonth.value,
+                    "syzqy": entInfoForm.assetRecentOneMonth.value,
+                    "xssr": entInfoForm.assetRecentOneMonth.value,
+                    "jlrze": entInfoForm.assetRecentOneMonth.value,
+                    "nf": (new Date()).getFullYear()
+                }
+            ];
+            alert(JSON.stringify(registerObj));
+            $.ajax({
+                url:requestObj.port+requestObj.address.register,
+                type: "POST",
+                contentType: 'application/json',
+                dataType: "json",
+//                dataType: "jsonp",
+//                jsonpCallback: "m1",
+                data: JSON.stringify(registerObj),
+                timeout: requestObj.timeoutTime,
+                beforeSend: function(){
+                    pluginObj.showLoading();
+                },
+                success: function(data){
+                    alert(JSON.stringify(data));
+                    if(data.head["_rd"] == "000000"){
+                        //请求成功处理逻辑
+                        $(".step1").hide();
+                        $(".step2").hide();
+                        $(".presentation").eq(1).removeClass("active");
+                        $(".presentation").eq(2).removeClass("active");
+                        $(".presentation").eq(3).addClass("active");
+                        $(".step3").show();
+                    }else{
+                        //请求失败提示
+                        pluginObj.alert("_rd","_rm");
+                    }
+                },
+                error: function(data,statue){
+//                    pluginObj.alert("",data.statusText);
+                    pluginObj.alert("",JSON.stringify(data));
+
+                },
+                complete: function(data,status){
+                    pluginObj.hideLoading();
+                }
+            });
+
+            function m1(data){cosnole.log("hehe"+JSON.stringify(data))}
+
+        }
+
+        //账户信息表单校验规则
+        $("#accountForm").validate({
+            submitHandler:function(form){
+                //判断是否有勾选用户注册协议
+                if(accountForm.agreement.checked){
+                    goNextStep();
+                }else{
+                    pluginObj.alert("","请您务必阅读并同意《用户注册协议》！");
+                }
+            },
+            errorPlacement: function(error, element){
+                var error_p = element.parent().nextAll().find('p.form-control-static.text-danger span');
+                error_p.html(error);
+            },
+            onkeyup: false,
+            rules: {
+                orgCode: {
+                    required: true,
+                    minlength: 10
+                },
+                mobile: {
+                    required: true,
+                    isMobile: true
+                },
+                verifyCode: {
+                    required: true,
+                    minlength: 6
+                },
+                contactName: {
+                    required: true
+                },
+                pwd: {
+                    required: true,
+                    minlength: 6
+                },
+                confirmPwd: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#pwd"
+                },
+                entEmail: {
+                    email: true
+                }
+            },
+            messages: {
+                orgCode: {
+                    required: "请输入组织机构代码/统一社会信用代码",
+                    minlength: "组织机构代码/统一社会信用代码长度为10位"
+                },
+                mobile: {
+                    required: "请输入联系人手机",
+                    mobile: true
+                },
+                verifyCode: {
+                    required: "请输入验证码",
+                    minlength: "验证码长度是6位"
+                },
+                contactName: {
+                    required: "请输入联系人姓名"
+                },
+                pwd: {
+                    required: "请输入密码",
+                    minlength: "密码最少为6位"
+                },
+                confirmPwd: {
+                    required: "请输入确认密码",
+                    minlength: "密码最少为6位",
+                    equalTo: "两次密码输入不一致"
+                },
+                entEmail: {
+                    required: "请输入联系人邮箱",
+                    email: "请输入正确的邮箱格式"
+                }
+            }
+        });
+
+        //企业信息及财务信息表单校验
+        $("#entInfoForm").validate({
+            submitHandler:function(form){
+                submitRegister();
+            },
+            errorPlacement: function(error, element){
+//                element.parents(".form-group").addClass("has-error");
+                element.after(error);
+            },
+            onkeyup: false,
+            onfocusout: function(element){
+                if(element.id.search("Recent")>=0){
+                    if($(element).valid()){
+                        console.log("是在表格内部"+moneyToUpperCase(element.value));
+                        var pId = element.id+"Upper";
+                        $("#"+pId).html(moneyToUpperCase(element.value * 10000));
+                    }
+                }
+            },
+            rules: {
+                entName: {
+                    required: true
+                },
+                createDate: {
+                    required: true,
+                    isDate: true
+                },
+                entLegal: {
+                    required: true
+                },
+                entLegalTel: {
+                    required: true
+                },
+                mesCode: {
+                    required: true,
+                    minlength: 6
+                },
+                assetRecentTwoYear: {
+                    digits: true
+                },
+                assetRecentOneYear: {
+                    digits: true
+                },
+                assetRecentOneMonth: {
+                    digits: true
+                },
+                debtRecentTwoYear: {
+                    digits: true
+                },
+                debtRecentOneYear: {
+                    digits: true
+                },
+                debtRecentOneMonth: {
+                    digits: true
+                },
+                rightRecentTwoYear: {
+                    digits: true
+                },
+                rightRecentOneYear: {
+                    digits: true
+                },
+                rightRecentOneMonth: {
+                    digits: true
+                },
+                saleRecentTwoYear: {
+                    digits: true
+                },
+                saleRecentOneYear: {
+                    digits: true
+                },
+                saleRecentOneMonth: {
+                    digits: true
+                },
+                rateRecentTwoYear: {
+                    digits: true
+                },
+                rateRecentOneYear: {
+                    digits: true
+                },
+                rateRecentOneMonth: {
+                    digits: true
+                }
+
+            },
+            messages: {
+                entName: {
+                    required: "请输入企业名称"
+                },
+                createDate: {
+                    required: "请输入成立时间",
+//                    isDate: "日期格式位YYYYMMDD"
+
+                },
+                entLegal: {
+                    required: "请输入法定代表人姓名"
+                },
+                entLegalTel: {
+                    required: "请输入法定代表人联系电话"
+                },
+                mesCode: {
+                    required: "请输入短信验证码",
+                    minlength: "请输入正确的短信验证码"
+                },
+                assetRecentTwoYear: {
+                    digits: "请输入正整数"
+                },
+                assetRecentOneYear: {
+                    digits: "请输入正整数"
+                },
+                assetRecentOneMonth: {
+                    digits: "请输入正整数"
+                },
+                debtRecentTwoYear: {
+                    digits: "请输入正整数"
+                },
+                debtRecentOneYear: {
+                    digits: "请输入正整数"
+                },
+                debtRecentOneMonth: {
+                    digits: "请输入正整数"
+                },
+                rightRecentTwoYear: {
+                    digits: "请输入正整数"
+                },
+                rightRecentOneYear: {
+                    digits: "请输入正整数"
+                },
+                rightRecentOneMonth: {
+                    digits: "请输入正整数"
+                },
+                saleRecentTwoYear: {
+                    digits: "请输入正整数"
+                },
+                saleRecentOneYear: {
+                    digits: "请输入正整数"
+                },
+                saleRecentOneMonth: {
+                    digits: "请输入正整数"
+                },
+                rateRecentTwoYear: {
+                    digits: "请输入正整数"
+                },
+                rateRecentOneYear: {
+                    digits: "请输入正整数"
+                },
+                rateRecentOneMonth: {
+                    digits: "请输入正整数"
+                }
+            }
+        });
+
+    });
+
+    </script>
+</body>
+</html>

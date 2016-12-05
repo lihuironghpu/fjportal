@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>企业－我的需求</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">企业个人中心</a></li>
+        <li><a href="">我的需求</a></li>
+        <li class="active">我的需求</li>
+    </ol>
+    <div class="search_input">
+        <form class="form-horizontal row" id="searchFrom" role="form" onsubmit="return false">
+                <div class="form-group col-xs-6">
+                    <label for="rzje" class="col-sm-3 control-label">融资金额：</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input class="form-control" type="text" maxlength="8" placeholder="" id="rzje" name="rzje">
+                            <div class="input-group-addon">万</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="xqzt" class="col-sm-3 control-label">需求状态：</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="xqzt" name="xqzt">
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group col-xs-6">
+                    <label for="fbrqks" class="col-sm-3 control-label">发布日期：</label>
+                    <div class="col-sm-4 pr0">
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyymmdd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="16" type="text" value="" id="fbrqks" name="fbrqks">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <input type="hidden" id="dtp_input2" value="" />
+                    </div>
+                    <div class="col-sm-1"><p class="form-control-static">-</p></div>
+                    <div class="col-sm-4 pl0">
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyymmdd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="16" type="text" value="" id="fbrqjs" name="fbrqjs" >
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <input type="hidden" id="dtp_input3" value="" />
+                    </div>
+                </div>
+
+
+            <div class="text-center col-xs-12">
+                <button id="searchBtn" class="btn btn-default">查询</button>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="search_result">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>需求编号</th>
+                    <th>融资金额(万)</th>
+                    <th>发布日期</th>
+                    <th>利率范围</th>
+                    <th>需求状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td class="text-primary">1-	暂存未发布</td>-->
+                    <!--<td><a href="">详情</a> <a href="">撤销</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>2-	已发布</td>-->
+                    <!--<td><a href="">详情</a> <a href="">撤销</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td class="text-danger">3-	已撤销</td>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>4-	已关注</td>-->
+                    <!--<td><a href="">详情</a> <a href="">撤销</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>5-	审核中</td>-->
+                    <!--<td><a href="">详情</a> <a href="">撤销</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>6-	审核通过</td>-->
+                    <!--<td><a href="">详情</a> <a href="">撤销</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>7-	已授信</td>-->
+                    <!--<td><a href="">详情</a> <a href="">撤销</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>8-	已放款</td>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>9-	已还款</td>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>10-	逾期未还款</td>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>T0101010</td>-->
+                    <!--<td>5000</td>-->
+                    <!--<td>2016-10-10</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>11-	不良贷款</td>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+        <div id="kkpager"></div>
+    </div>
+
+
+</div>
+<script src="../js/framework/jquery.min.js"></script>
+<script src="../js/framework/bootstrap.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/plugin/kkpager.min.js"></script>
+<script src="../js/common.js"></script>
+
+
+
+<script>
+    $(document).ready(function(){
+        //初始化日期插件
+        dataPiker();
+
+        //查询成功执行方法
+        var successFun = function(data,postData){
+            alert(JSON.stringify(data));
+            alert(data.body.data.length);
+            requestObj.searchObj.totalPage =  data.body.totalPageNo;//总页码
+            requestObj.searchObj.recordsTotal = data.body.totalCount;//总记录数目
+            requestObj.initPager(
+                    requestObj.address.entMyRequest,
+                    successFun
+            );
+
+            //更新列表
+            $(".search_result tbody").empty();
+            for(var i = 0 ; i < data.body.data.length ; i ++ ){
+                $(".search_result tbody").append(
+                        "<tr><td>" + data.body.data[i].xqbh + "</td>" +
+                        "<td>" + data.body.data[i].yhmc + "</td>" +
+                        "<td>" + data.body.data[i].fbrqks + "</td>" +
+                        "<td>" + data.body.data[i].rzje + "</td>" +
+                        "<td>" + data.body.data[i].rzqx + "</td>" +
+                        "<td><a href=entMyRequestDetail.html?pageIndex=1&pageSize=10&qybh=" + data.body.data[i].xqbh + ">详情</a></td>" +
+                        +"</tr>"
+                )
+            }
+        };
+
+        //进入页面默认查询数据
+        requestObj.searchServer(
+                requestObj.address.entMyRequest,
+                "searchFrom",
+                successFun
+        );
+
+        //初始化市区数据
+        requestObj.initCity();
+
+        //给查询按钮绑定查询事件
+        $("#searchBtn").click(function(){
+            requestObj.searchObj.postData.pageIndex = "1";
+            requestObj.searchServer(
+                    requestObj.address.entMyRequest,
+                    "searchFrom",
+                    successFun
+            );
+        });
+
+    });
+
+
+
+</script>
+</body>
+</html>

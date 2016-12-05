@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融创新服务平台</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/static.css">
+    <link rel="stylesheet" href="css/kkpager_green.css">
+</head>
+<body>
+<div class="header"></div>
+<div class="nav main_menu">
+    <div class="container">
+        <a href="index.html">首页</a><a href="policyGuide.html">政策指南</a><a href="product.html">金融产品</a><a href="institution.html" class="active">金融机构</a><a href="contactUs.html">联系我们</a><a href="index.html#loginMenu">个人中心</a>
+    </div>
+</div>
+<div class="container">
+    <!-- 当前位置-->
+    <div class="nav guide_menu">
+        <a href="index.html">首页</a><a href="">金融机构</a>
+    </div>
+    <div class="section news_content">
+        <ul class="news_list">
+            <!--<li><a href="newsDetail.html">标题1标题1标题1标题1标题1标题1标题1</a><span>2016-04-20</span></li>-->
+        </ul>
+        <div class="footer page_content">
+            <!-- 此处是分页-->
+            <!--这是个分页-->
+            <div id="kkpager"></div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>COPYRIGHT 2015 www.XXX.gov.cn All Rights Reserved. </p>
+    <p>版权所有：XXX</p>
+</div>
+<script src="js/framework/jquery.min.js"></script>
+<script src="js/framework/bootstrap.min.js"></script>
+<script src="js/plugin/kkpager.min.js"></script>
+<script src="js/common.js"></script>
+
+<!--[if lte IE 8]>
+<script src="js/response.js"></script>
+<![endif]-->
+<script>
+    $(document).ready(function(){
+        var pageObj = {
+            pno : 1,//当前页
+            total : 2,//总页码
+            totalRecords: 12//总记录数目
+        };
+
+        //发送请求，请求第一页数据 todo
+        (function(){
+            $.ajax({
+                url:"test/guideList.json",
+                dataType:"json",
+                success: function(data){
+                    pageObj.pno = 1;
+                    pageObj.total = data.total;
+                    pageObj.totalRecords = data.totalRecords;
+                    console.log(JSON.stringify(data));
+                    $(".news_list").empty();
+                    for(var i = 0 ; i < data.list.length ; i ++ ){
+                        var liELe = "<li><a href='newsDetail.html?id=" + data.list[i].idNo +  "'>" + data.list[i].titleText + "</a><span>" + data.list[i].time + "</span></li>"
+                        $(".news_list").append(liELe);
+                    }
+                    initPager();
+                }
+            });
+        })();
+        //生成分页控件
+        function initPager(){
+            kkpager.generPageHtml({
+            isShowFirstPageBtn: false,
+            isShowLastPageBtn: false,
+            isGoPage: false,
+            pno : pageObj.pno,
+            mode : 'click', //设置为click模式
+            //总页码
+            total : pageObj.total,
+            //总数据条数
+            totalRecords : pageObj.totalRecords,
+            //点击页码、页码输入框跳转、以及首页、下一页等按钮都会调用click
+            //适用于不刷新页面，比如ajax
+            click : function(n){
+                //处理完后可以手动条用selectPage进行页码选中切换 todo
+                $.ajax({
+                    url:"test/guideList.json",
+                    dataType:"json",
+                    success: function(data){
+                        console.log(JSON.stringify(data));
+                        $(".news_list").empty();
+                        for(var i = 0 ; i < data.list.length ; i ++ ){
+                            var liELe = "<li><a href='newsDetail.html?id=" + data.list[i].idNo +  "'>" + data.list[i].titleText + "</a><span>" + data.list[i].time + "</span></li>"
+                            $(".news_list").append(liELe);
+                        }
+                        kkpager.selectPage(n);
+                    }
+                });
+
+
+            }
+
+        });
+    }
+});
+</script>
+</body>
+</html>

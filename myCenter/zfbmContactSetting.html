@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融办－联系我们</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">金融办个人中心</a></li>
+        <li><a href="">联系我们</a></li>
+        <li class="active">联系我们</li>
+    </ol>
+    <div class="top_btn_container">
+        <div class="btn-group">
+            <a href="zfbmContactSettingAdded.html" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 新增</a>
+        </div>
+    </div>
+    <div class="search_result">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>政府部门</th>
+                    <th>邮箱</th>
+                    <th>电话</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>省金融办</td>-->
+                    <!--<td>www@qq.com</td>-->
+                    <!--<td>637782829</td>-->
+                    <!--<td><a href="">修改</a> <a href="">删除</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>A市金融办</td>-->
+                    <!--<td>www@qq.com</td>-->
+                    <!--<td>637782822</td>-->
+                    <!--<td><a href="">修改</a> <a href="">删除</a></td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+        <div id="kkpager"></div>
+    </div>
+
+
+</div>
+<script src="../js/framework/jquery.min.js"></script>
+<script src="../js/framework/bootstrap.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/plugin/kkpager.min.js"></script>
+<script src="../js/common.js"></script>
+
+
+
+<script>
+
+    $(document).ready(function(){
+        //初始化日期插件
+        dataPiker();
+
+        //查询成功执行方法
+        var successFun = function(data,postData){
+            alert(JSON.stringify(data));
+            requestObj.searchObj.totalPage =  data.body.totalPageNo;//总页码
+            requestObj.searchObj.recordsTotal = data.body.totalCount;//总记录数目
+            requestObj.initPager(
+                    requestObj.address.zfbmContactSetting,
+                    successFun
+            );
+
+
+            //更新列表
+            $(".search_result tbody").empty();
+            for(var i = 0 ; i < data.body.data.length ; i ++ ){
+                $(".search_result tbody").append(
+                        "<tr><td>" + data.body.data[i].zfbm + "</td>" +
+                        "<td>" + data.body.data[i].yx + "</td>" +
+                        "<td>" + data.body.data[i].dh + "</td>" +
+                        "<td>"
+                        +"<a href="+data.body.data[i].qybh+">修改</a>"+"&nbsp;&nbsp;"
+                        +"<a href="+data.body.data[i].qybh+">删除</a>"
+                        +"</td>" +
+                        "</tr>"
+                )
+            }
+        };
+
+        //进入页面默认查询数据
+        requestObj.searchServer(
+                requestObj.address.zfbmContactSetting,
+                "searchFrom",
+                successFun
+        );
+
+        //初始化市区数据
+        requestObj.initCity();
+
+        //给查询按钮绑定查询事件
+        $("#searchBtn").click(function(){
+            requestObj.searchObj.postData.pageIndex = "1";
+            requestObj.searchServer(
+                    requestObj.address.zfbmContactSetting,
+                    "searchFrom",
+                    successFun
+            );
+        });
+
+    })
+
+</script>
+</body>
+</html>

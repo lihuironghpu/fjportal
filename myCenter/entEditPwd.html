@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>企业－密码修改</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">企业个人中心</a></li>
+        <li><a href="">企业信息</a></li>
+        <li class="active">密码修改</li>
+    </ol>
+    <div class="form_add">
+        <div class="form form-horizontal row" role="form">
+            <div class="form-group col-xs-6">
+                <label for="inputEmail3" class="col-sm-8 control-label">组织机构代码/统一社会信用代码：</label>
+                <div class="col-sm-4">
+                    <p class="form-control-static">02020SSii</p>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="" class="col-sm-4 control-label">联系电话：</label>
+                <div class="col-sm-8">
+                    <p class="form-control-static">67829290</p>
+                </div>
+            </div>
+
+
+
+            <div class="form-group col-xs-6">
+                <label for="inputEmail3" class="col-sm-4 control-label">原密码：</label>
+                <div class="col-sm-8">
+                        <input class="form-control" type="password" maxlength="8" placeholder="">
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="inputEmail3" class="col-sm-4 control-label">新密码：</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="password" maxlength="8" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group col-xs-6">
+                <label for="inputEmail3" class="col-sm-4 control-label">确认密码：</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="password" maxlength="8" placeholder="">
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="inputEmail3" class="col-sm-4 control-label">验证码：</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" maxlength="4" placeholder="">
+                </div>
+            </div>
+
+            <div class="text-center col-xs-12">
+                <button type="submit" class="btn btn-primary">确认</button>
+            </div>
+
+
+            </form>
+        </div>
+    </div>
+    <script src="../js/framework/jquery.min.js"></script>
+    <script src="../js/framework/bootstrap.min.js"></script>
+    <script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+    <script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../js/plugin/kkpager.min.js"></script>
+    <script src="../js/common.js"></script>
+
+
+
+    <script>
+        $(document).ready(function(){
+            //初始化日期插件
+            dataPiker();
+
+            var pageObj = {
+                pno : 1,//当前页
+                total : 2,//总页码
+                totalRecords: 12//总记录数目
+            };
+            initPager();
+
+            //生成分页控件
+            function initPager(){
+                kkpager.generPageHtml({
+                    isShowFirstPageBtn: false,
+                    isShowLastPageBtn: false,
+                    isGoPage: false,
+                    pno : pageObj.pno,
+                    mode : 'click', //设置为click模式
+                    //总页码
+                    total : pageObj.total,
+                    //总数据条数
+                    totalRecords : pageObj.totalRecords,
+                    //点击页码、页码输入框跳转、以及首页、下一页等按钮都会调用click
+                    //适用于不刷新页面，比如ajax
+                    click : function(n){
+                        //处理完后可以手动条用selectPage进行页码选中切换 todo
+                        $.ajax({
+
+                        });
+
+
+                    }
+
+                });
+            }
+        });
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融机构－企业查询</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">金融机构个人中心</a></li>
+        <li><a href="">我的产品</a></li>
+        <li class="active">我的产品</li>
+    </ol>
+    <div class="search_input">
+        <form class="form-horizontal row" id="searchFrom" role="form" onsubmit="return false;">
+            <div class="form-group col-xs-6">
+                <label for="cpmc" class="col-sm-3 control-label">产品名称：</label>
+                <div class="col-sm-9">
+                    <input class="form-control" id="cpmc" name="cpmc" type="text" maxlength="8" placeholder="">
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="dkqx" class="col-sm-3 control-label">贷款期限：</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="dkqx" name="dkqx">
+                        <option vlaue=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="dbfs" class="col-sm-3 control-label">担保方式：</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="dbfs" name="dbfs">
+                        <option vlaue=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="dked" class="col-sm-3 control-label">贷款额度：</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="dked" name="dked">
+                        <option vlaue=""></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text-center col-xs-12">
+                <button id="searchBtn" class="btn btn-default">查询</button>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="search_result">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>机构名称</th>
+                    <th>产品名称</th>
+                    <th>参考利率范围</th>
+                    <th>贷款期限(月)</th>
+                    <th>担保方式</th>
+                    <th>贷款额度(万)</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>机构1</td>-->
+                    <!--<td>产品1</td>-->
+                    <!--<td>1％-10%</td>-->
+                    <!--<td>2-3</td>-->
+                    <!--<td>不限</td>-->
+                    <!--<td>300-500</td>-->
+                    <!--<td><a href="jrjgMyProductDetail.html">详情</a> <a href="">发布</a> <a href="">下架</a> <a href="">删除</a></td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+        <div id="kkpager"></div>
+    </div>
+
+
+</div>
+<script src="../js/framework/jquery.min.js"></script>
+<script src="../js/framework/bootstrap.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/plugin/kkpager.min.js"></script>
+<script src="../js/common.js"></script>
+
+
+<script>
+    //    var searchObj = {
+    //        totalPage : 2,//总页码
+    //        recordsTotal: 12,//总记录数目
+    //        postData: {
+    //            pageIndex : 1,//当前页
+    //            pageSize: 10,//每页数目
+    //            /*其余输入框内容*/
+    //        }
+    //    };
+    $(document).ready(function(){
+        //初始化日期插件
+        dataPiker();
+
+        //查询成功执行方法
+        var successFun = function(data,postData){
+            alert(JSON.stringify(data));
+            requestObj.searchObj.totalPage =  data.body.totalPageNo;//总页码
+            requestObj.searchObj.recordsTotal = data.body.totalCount;//总记录数目
+            requestObj.initPager(
+                    requestObj.address.jrjgMyproduct,
+                    successFun
+            );
+
+            //更新列表
+            $(".search_result tbody").empty();
+            for(var i = 0 ; i < data.body.data.length ; i ++ ){
+            	var dbfsStr ;
+                if(data.body.data[i].dbfs=='1'){
+                	dbfsStr = "<td>政策性融资担保</td>" ;
+                }else if(data.body.data[i].dbfs=='2'){
+                	dbfsStr ="<td>抵押</td>" ;
+                }else if(data.body.data[i].dbfs=='3'){
+                	dbfsStr ="<td>质押</td>" ;
+                }else if(data.body.data[i].dbfs=='4'){
+                	dbfsStr ="<td>一般保证</td>" ;
+                }else{
+                	dbfsStr ="<td>信用</td>" ;
+                }
+                $(".search_result tbody").append(
+                        "<tr><td>" + data.body.data[i].jgmc + "</td>" +
+                        "<td>" + data.body.data[i].cpmc + "</td>" +
+                        "<td>" + data.body.data[i].cklls +"%-"+data.body.data[i].cklle+"%"+"</td>" +
+                        "<td>" + data.body.data[i].dkqx + "个月</td>" +
+                        dbfsStr+
+                        "<td>" + data.body.data[i].dkeds +"万元-"+data.body.data[i].dkede+ "万元</td>" +
+                        "<td>"
+                        +"<a href=jrjgMyProductDetail.html?pageIndex=1&pageSize=10&qybh="+data.body.data[i].qybh+">详情</a>"+"&nbsp;&nbsp;"
+                        +"<a href="+data.body.data[i].qybh+">发布</a>"+"&nbsp;&nbsp;"
+                        +"<a href="+data.body.data[i].qybh+">下架</a>"+"&nbsp;&nbsp;"
+                        +"<a href="+data.body.data[i].qybh+">删除</a>"
+                        +"</td>" +
+                        "</tr>"
+                )
+            }
+        };
+
+
+        //进入页面默认查询数据
+        requestObj.searchServer(
+                requestObj.address.jrjgMyproduct,
+                "searchFrom",
+                successFun
+        )
+
+        //初始化市区数据
+        requestObj.initCity();
+
+        //给查询按钮绑定查询事件
+        $("#searchBtn").click(function(){
+            requestObj.searchObj.postData.pageIndex = "1";
+            requestObj.searchServer(
+                    requestObj.address.jrjgMyproduct,
+                    "searchFrom",
+                    successFun
+            );
+
+        });
+
+
+
+
+
+    });
+
+</script>
+</body>
+</html>

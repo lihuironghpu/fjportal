@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>企业－我的需求</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">企业个人中心</a></li>
+        <li><a href="">金融产品查询</a></li>
+        <li class="active">金融产品查询</li>
+    </ol>
+    <div class="search_input">
+        <form class="form-horizontal row" role="form" id="searchFrom" onsubmit="return false;">
+                <div class="form-group col-xs-6">
+                    <label for="jgmc" class="col-sm-3 control-label">机构名称：</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="text" id="jgmc" name="jgmc" maxlength="8" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="cpmc" class="col-sm-3 control-label">产品名称：</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="text" id="cpmc" name="cpmc" maxlength="8" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="form-group col-xs-6">
+                    <label for="dkqx" class="col-sm-3 control-label">贷款期限：</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="dkqx">
+                            <option value="01">3个月</option>
+                            <option value="02">6个月</option>
+                            <option value="03">12个月</option>
+                            <option value="04">24个月</option>
+                            <option value="05">36个月</option>
+                            <option value="06">60个月</option>
+                            <option value="07">60个月以上</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="dbfs" class="col-sm-3 control-label">担保方式：</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="dbfs">
+                            <option value="01">政策性融资担保</option>
+                            <option value="02">抵押</option>
+                            <option value="03">质押</option>
+                            <option value="04">一般保证</option>
+                            <option value="05">信用</option>
+                        </select>
+                    </div>
+                </div>
+
+            <div class="text-center col-xs-12">
+                <button type="submit" class="btn btn-default">查询</button>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="search_result">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>机构名称</th>
+                    <th>产品名称</th>
+                    <th>参考利率范围</th>
+                    <th>贷款期限(月)</th>
+                    <th>担保方式</th>
+                    <th>融资额度(万)</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>中国工商银行</td>-->
+                    <!--<td>信贷保X921</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>不限</td>-->
+                    <!--<th>1-300</th>-->
+                    <!--<td><a href="entProductSearchDeatil.html">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>中国工商银行</td>-->
+                    <!--<td>信贷保X921</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>不限</td>-->
+                    <!--<th>1-300</th>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>中国工商银行</td>-->
+                    <!--<td>信贷保X921</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>不限</td>-->
+                    <!--<th>1-300</th>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>中国工商银行</td>-->
+                    <!--<td>信贷保X921</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>不限</td>-->
+                    <!--<th>1-300</th>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>中国工商银行</td>-->
+                    <!--<td>信贷保X921</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>不限</td>-->
+                    <!--<th>1-300</th>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>中国工商银行</td>-->
+                    <!--<td>信贷保X921</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>不限</td>-->
+                    <!--<th>1-300</th>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>中国工商银行</td>-->
+                    <!--<td>信贷保X921</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>不限</td>-->
+                    <!--<th>1-300</th>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>中国工商银行</td>-->
+                    <!--<td>信贷保X921</td>-->
+                    <!--<td>1%－10%</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>不限</td>-->
+                    <!--<th>1-300</th>-->
+                    <!--<td><a href="">详情</a></td>-->
+                <!--</tr>-->
+
+            </tbody>
+        </table>
+        <div id="kkpager"></div>
+    </div>
+
+
+</div>
+<script src="../js/framework/jquery.min.js"></script>
+<script src="../js/framework/bootstrap.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/plugin/kkpager.min.js"></script>
+<script src="../js/common.js"></script>
+
+
+
+<script>
+$(document).ready(function(){
+    //初始化日期插件
+    dataPiker();
+
+    //查询成功执行方法
+    var successFun = function(data,postData){
+        alert(JSON.stringify(data));
+        requestObj.searchObj.totalPage =  data.body.totalPageNo;//总页码
+        requestObj.searchObj.recordsTotal = data.body.totalCount;//总记录数目
+        requestObj.initPager(
+                requestObj.address.entProductSearch,
+                successFun
+        );
+        //更新列表
+        $(".search_result tbody").empty();
+        for(var i = 0 ; i < data.body.data.length ; i ++ ){
+        	var dbfsStr ;
+            if(data.body.data[i].dbfs=='1'){
+            	dbfsStr = "<td>政策性融资担保</td>" ;
+            }else if(data.body.data[i].dbfs=='2'){
+            	dbfsStr ="<td>抵押</td>" ;
+            }else if(data.body.data[i].dbfs=='3'){
+            	dbfsStr ="<td>质押</td>" ;
+            }else if(data.body.data[i].dbfs=='4'){
+            	dbfsStr ="<td>一般保证</td>" ;
+            }else{
+            	dbfsStr ="<td>信用</td>" ;
+            }
+            $(".search_result tbody").append(
+                    "<tr><td>" + data.body.data[i].jgmc + "</td>" +
+                    "<td>" + data.body.data[i].cpmc + "</td>" +
+                    "<td>" + data.body.data[i].cklls +"%-"+data.body.data[i].cklle+"%"+"</td>" +
+                    "<td>" + data.body.data[i].dkqx + "个月</td>" +
+                    dbfsStr+
+                    "<td>" + data.body.data[i].dbfs+ "</td>" +
+                    "<td>" + data.body.data[i].rzed+ "万元</td>" +
+                    "<td><a href=entProductSearchDetail.html?pageIndex=1&pageSize=10&qybh=" + data.body.data[i].qybh + ">详情</a></td>" +
+                    "</tr>"
+            )
+        }
+    };
+
+
+    //进入页面默认查询数据
+    requestObj.searchServer(
+            requestObj.address.entProductSearch,
+            "searchFrom",
+            successFun
+    );
+
+    //初始化市区数据
+    //requestObj.initCity();
+
+    //给查询按钮绑定查询事件
+    $("#searchBtn").click(function(){
+        requestObj.searchObj.postData.pageIndex = "1";
+        requestObj.searchServer(
+                requestObj.address.entProductSearch,
+                "searchFrom",
+                successFun
+        );
+
+    });
+})
+
+
+
+</script>
+</body>
+</html>

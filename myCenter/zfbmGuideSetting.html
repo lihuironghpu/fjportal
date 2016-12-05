@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>企业－我的需求</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">金融办个人中心</a></li>
+        <li><a href="">金融产品查询</a></li>
+        <li class="active">金融产品查询</li>
+    </ol>
+    <div class="search_input">
+        <form class="form-horizontal row" role="form">
+
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-3 control-label">金融办等级：</label>
+                    <div class="col-sm-9">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-3 control-label">所属区域：</label>
+                    <div class="col-sm-9">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label for="inputEmail3" class="col-sm-3 control-label">所属县区：</label>
+                    <div class="col-sm-9">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+            <div class="text-center col-xs-12">
+                <button type="submit" class="btn btn-default">查询</button>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="search_result">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>政策标题</th>
+                    <th>发布机构</th>
+                    <th>发布时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>标题1标题1标题1标题1标题1标题1标题1标题1</td>-->
+                    <!--<td>机构1</td>-->
+                    <!--<td>2016/09/09</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>标题1标题1标题1标题1标题1标题1标题1标题1</td>-->
+                    <!--<td>机构1</td>-->
+                    <!--<td>2016/09/09</td>-->
+                <!--</tr>-->
+
+            </tbody>
+        </table>
+        <div id="kkpager"></div>
+    </div>
+
+
+</div>
+<script src="../js/framework/jquery.min.js"></script>
+<script src="../js/framework/bootstrap.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/plugin/kkpager.min.js"></script>
+<script src="../js/common.js"></script>
+
+
+
+<script>
+
+    $(document).ready(function(){
+        //初始化日期插件
+        dataPiker();
+
+        //查询成功执行方法
+        var successFun = function(data,postData){
+            alert(JSON.stringify(data));
+            requestObj.searchObj.totalPage =  data.body.totalPageNo;//总页码
+            requestObj.searchObj.recordsTotal = data.body.totalCount;//总记录数目
+            requestObj.initPager(
+                    requestObj.address.zfbmGuideSetting,
+                    successFun
+            );
+
+            //更新列表
+            $(".search_result tbody").empty();
+            for(var i = 0 ; i < data.body.data.length ; i ++ ){
+                $(".search_result tbody").append(
+                        "<tr><td>" + data.body.data[i].zcbt + "</td>" +
+                        "<td>" + data.body.data[i].fbjg + "</td>" +
+                        "<td>" + data.body.data[i].fbsj + "</td>" +
+                        "</tr>"
+                )
+            }
+        };
+
+        //进入页面默认查询数据
+        requestObj.searchServer(
+                requestObj.address.zfbmGuideSetting,
+                "searchFrom",
+                successFun
+        );
+
+        //初始化市区数据
+        requestObj.initCity();
+
+        //给查询按钮绑定查询事件
+        $("#searchBtn").click(function(){
+            requestObj.searchObj.postData.pageIndex = "1";
+            requestObj.searchServer(
+                    requestObj.address.zfbmGuideSetting,
+                    "searchFrom",
+                    successFun
+            );
+        });
+
+    })
+
+</script>
+</body>
+</html>

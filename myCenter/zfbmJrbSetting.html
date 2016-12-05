@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融办－金融办管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">金融办个人中心</a></li>
+        <li><a href="">金融办管理</a></li>
+        <li class="active">金融办管理</li>
+    </ol>
+    <div class="top_btn_container">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 新增</button>
+        </div>
+    </div>
+    <div class="search_result">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>用户号</th>
+                    <th>用户角色</th>
+                    <th>用户状态</th>
+                    <th>生成时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>XD2020201</td>-->
+                    <!--<td>企业</td>-->
+                    <!--<td>有效</td>-->
+                    <!--<td>2016/09/01</td>-->
+                    <!--<td>-->
+                        <!--<a href="">锁定</a> <a href="">解锁</a> <a href="">重置密码</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+        <div id="kkpager"></div>
+    </div>
+
+
+</div>
+<script src="../js/framework/jquery.min.js"></script>
+<script src="../js/framework/bootstrap.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/plugin/kkpager.min.js"></script>
+<script src="../js/common.js"></script>
+
+
+
+<script>
+    //    var searchObj = {
+    //        totalPage : 2,//总页码
+    //        recordsTotal: 12,//总记录数目
+    //        postData: {
+    //            pageIndex : 1,//当前页
+    //            pageSize: 10,//每页数目
+    //            /*其余输入框内容*/
+    //        }
+    //    };
+    $(document).ready(function(){
+        //初始化日期插件
+        dataPiker();
+
+        //查询成功执行方法
+        var successFun = function(data,postData){
+            alert(JSON.stringify(data));
+            requestObj.searchObj.totalPage =  data.body.totalPageNo;//总页码
+            requestObj.searchObj.recordsTotal = data.body.totalCount;//总记录数目
+            requestObj.initPager(
+                    requestObj.address.zfbmJrbSetting,
+                    successFun
+            );
+
+            //更新列表
+            $(".search_result tbody").empty();
+            for(var i = 0 ; i < data.body.data.length ; i ++ ){
+                $(".search_result tbody").append(
+                        "<tr><td>" + data.body.data[i].yhh + "</td>" +
+                        "<td>" + data.body.data[i].yhjs + "</td>" +
+                        "<td>" + data.body.data[i].yhzt + "</td>" +
+                        "<td>" + data.body.data[i].scsj + "</td>" +
+                        "<td>"
+                        +"<a href="+data.body.data[i].qybh+">锁定</a>"+"&nbsp;&nbsp;"
+                        +"<a href="+data.body.data[i].qybh+">解锁</a>"+"&nbsp;&nbsp;"
+                        +"<a href="+data.body.data[i].qybh+">重置密码</a>"
+                        +"</td>" +
+                        "</tr>"
+                )
+            }
+        };
+
+
+        //进入页面默认查询数据
+        requestObj.searchServer(
+                requestObj.address.zfbmJrbSetting,
+                "searchFrom",
+                successFun
+        )
+
+        //初始化市区数据
+        requestObj.initCity();
+
+        //给查询按钮绑定查询事件
+        $("#searchBtn").click(function(){
+            requestObj.searchObj.postData.pageIndex = "1";
+            requestObj.searchServer(
+                    requestObj.address.zfbmJrbSetting,
+                    "searchFrom",
+                    successFun
+            );
+
+        });
+
+
+
+
+
+    });
+
+</script>
+</body>
+</html>

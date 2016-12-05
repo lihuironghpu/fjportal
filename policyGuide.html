@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融创新服务平台</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/static.css">
+    <link rel="stylesheet" href="css/kkpager_green.css">
+</head>
+<body>
+    <div class="header"></div>
+    <div class="nav main_menu">
+        <div class="container">
+            <a href="index.html">首页</a><a href="policyGuide.html" class="active">政策指南</a><a href="product.html">金融产品</a><a href="institution.html">金融机构</a><a href="contactUs.html">联系我们</a><a href="index.html#loginMenu">个人中心</a>
+        </div>
+    </div>
+    <!--政策指南-->
+    <div class="container">
+        <!-- 当前位置-->
+        <div class="nav guide_menu">
+            <a href="index.html">首页</a><a href="">政策指南</a>
+        </div>
+        <div class="policy_content clearfix">
+            <!-- 左侧导航-->
+            <div class="nav policy_type">
+                <p class="active" id="city">市相关政策</p>
+                <p id="province">省相关政策</p>
+                <p id="country">国家相关政策</p>
+            </div>
+            <!-- 右侧列表-->
+            <div class="section policy_active">
+                <div class="header">
+                    <div class="nav">
+                        <a>首页</a><a>政策指南</a><a>市相关政策</a>
+                    </div>
+                </div>
+                <ul class="news_list">
+                    <!--<li><a href="newsDetail.html">标题1标题1标题1标题1标题1标题1标题1</a><span>2016-04-20</span></li>-->
+                    <!--<li><a href="newsDetail.html">标题2标题2标题2标题2标题2标题2标题2标题2</a><span>2016-04-19</span></li>-->
+                    <!--<li><a href="newsDetail.html">标题3标题3标题3标题3标题3标题3标题3</a><span>2016-04-19</span></li>-->
+                    <!--<li><a href="newsDetail.html">标题4标题4标题4标题4标题4标题4</a><span>2016-04-19</span></li>-->
+                    <!--<li><a href="newsDetail.html">标题5标题5标题5标题5标题5标题5标题5标题5</a><span>2016-04-20</span></li>-->
+                    <!--<li><a href="newsDetail.html">标题6标题6标题6标题6标题6标题6标题6</a><span>2016-04-19</span></li>-->
+                    <!--<li><a href="newsDetail.html">标题7标题7标题7标题7标题7标题7标题7标题7</a><span>2016-04-19</span></li>-->
+                    <!--<li><a href="newsDetail.html">标题8标题8标题8标题8标题8标题8标题8标题8标题8</a><span>2016-04-19</span></li>-->
+                    <!--<li><a href="newsDetail.html">标题9标题9标题9标题9标题9标题9</a><span>2016-04-20</span></li>-->
+                    <!--<li><a href="newsDetail.html">标题10标题10标题10标题10标题10标题10标题10标题10标题10</a><span>2016-04-19</span></li>-->
+                </ul>
+                <div class="footer page_content">
+                    <!-- 此处是分页-->
+                    <div id="kkpager"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>COPYRIGHT 2015 www.XXX.gov.cn All Rights Reserved. </p>
+        <p>版权所有：XXX</p>
+    </div>
+    <script src="js/framework/jquery.min.js"></script>
+    <script src="js/framework/bootstrap.min.js"></script>
+    <script src="js/plugin/kkpager.min.js"></script>
+    <script src="../js/common.js"></script>
+    <!--[if lte IE 8]>
+    <script src="js/response.js"></script>
+    <![endif]-->
+    <script>
+        $(document).ready(function(){
+            //点击左侧菜单
+            $(".policy_type p").click(function(){
+                $(".policy_type p").removeClass("active");
+                $(this).addClass("active");
+                $(".policy_active nav a").eq(2).html($(this).html());
+                //此处可发送请求，处理右侧列表更新为相关政策列表，更新分页  todo
+                $.ajax({
+                    url:requestObj.port+requestObj.address.policyGuide,
+                    dataType:"json",
+                    success: function(data){
+                        pageObj.pno = 1;
+                        pageObj.total = data.total;
+                        pageObj.totalRecords = data.totalRecords;
+                        $(".news_list").empty();
+                        for(var i = 0 ; i < data.list.length ; i ++ ){
+                            var liELe = "<li><a href='newsDetail.html?id=" + data.list[i].idNo +  "'>" + data.list[i].titleText + "</a><span>" + data.list[i].time + "</span></li>"
+                            $(".news_list").append(liELe);
+                        }
+                    }
+                });
+            });
+            var pageObj = {
+//                pno : 1,//当前页
+//                total : 2,//总页码
+//                totalRecords: 12//总记录数目
+            };
+			var postData={
+					"bh":"1",
+					"pageIndex":"1",
+					"pageSize":"10"
+					};
+            //发送请求，请求第一页数据 todo
+            (function(){
+                $.ajax({
+                    url: requestObj.port+requestObj.address.policyGuide,
+                    dataType: "json",
+                    type:"post",
+                    contentType:"application/json",
+                    data:JSON.stringify(postData),
+                    success: function(data){
+                        pageObj.pno = 1;
+                        pageObj.total = data.body.recordsTotal%10==0 ? data.body.recordsTotal/10 : parseInt(data.body.recordsTotal/10)+1;
+                        pageObj.totalRecords = data.body.recordsTotal;
+                        console.log(JSON.stringify(data));
+                        $(".news_list").empty();
+                        for(var i = 0 ; i < data.body.data.length ; i++ ){
+                            var liELe = "<li><a href='newsDetail.html?id=" + data.body.data[i].bh +  "'>" + data.body.data[i].zcbt + "</a><span>" + data.body.data[i].fbsj + "</span></li>"
+                            $(".news_list").append(liELe);
+                        }
+                        initPager();
+                    }
+                });
+            })();
+            //生成分页控件
+            function initPager(){
+                kkpager.generPageHtml({
+                    isShowFirstPageBtn: false,
+                    isShowLastPageBtn: false,
+                    isGoPage: false,
+                    pno : pageObj.pno,
+                    mode : 'click', //设置为click模式
+                    //总页码
+                    total : pageObj.total,
+                    //总数据条数
+                    totalRecords : pageObj.totalRecords,
+                    //点击页码、页码输入框跳转、以及首页、下一页等按钮都会调用click
+                    //适用于不刷新页面，比如ajax
+                    click : function(n){
+                        //处理完后可以手动条用selectPage进行页码选中切换 todo
+                        $.ajax({
+                            url:requestObj.port+requestObj.address.policyGuide,
+                            dataType:"json",
+                            success: function(data){
+                                console.log(JSON.stringify(data));
+                                $(".news_list").empty();
+                                for(var i = 0 ; i < data.list.length ; i ++ ){
+                                    var liELe = "<li><a href='newsDetail.html?id=" + data.list[i].idNo +  "'>" + data.list[i].titleText + "</a><span>" + data.list[i].time + "</span></li>"
+                                    $(".news_list").append(liELe);
+                                }
+                                kkpager.selectPage(n);
+                            }
+                        });
+
+
+                    }
+
+                });
+                }
+            });
+    </script>
+</body>
+</html>

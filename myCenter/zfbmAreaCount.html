@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>金融办－企业业务统计查询</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../css/kkpager_green.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mycenter.css">
+</head>
+<body>
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="">金融办个人中心</a></li>
+        <li><a href="">业务统计</a></li>
+        <li class="active">区域业务统计</li>
+    </ol>
+    <div class="search_input">
+        <form class="form-horizontal row" id="searchFrom" role="form" onsubmit="return false;">
+            <div class="form-group col-xs-6">
+                <label for="sssq" class="col-sm-3 control-label">所属区域：</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="sssq" name="sssq">
+                        <option vlaue=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="ssxq" class="col-sm-3 control-label">所属县区：</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="ssxq" name="ssxq">
+                        <option vlaue=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="fbrqks" class="col-sm-3 control-label">时间：</label>
+                <div class="col-sm-4 pr0">
+                    <div class="input-group date form_date" data-date="" data-date-format="yyyymmdd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        <input class="form-control" id="fbrqks" name="fbrqks" size="16" type="text" value="" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_input2" value="" />
+                </div>
+                <div class="col-sm-1"><p class="form-control-static">-</p></div>
+                <div class="col-sm-4 pl0">
+                    <div class="input-group date form_date" data-date="" data-date-format="yyyymmdd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        <input class="form-control" id="fbrqjs" name="fbrqjs" size="16" type="text" value="" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_input3" value="" />
+                </div>
+            </div>
+
+            <div class="text-center col-xs-12">
+                <button id="searchBtn" class="btn btn-default">查询</button>
+            </div>
+
+
+        </form>
+    </div>
+    <div class="search_result">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>所属区域</th>
+                    <th>所属县区</th>
+                    <th>注册企业数量</th>
+                    <th>发布需求个数</th>
+                    <th>申请融资金额（亿元）</th>
+                    <th>授信需求个数</th>
+                    <th>授信融资金额（亿元）</th>
+                    <th>放款需求个数</th>
+                    <th>放款融资金额（亿元）</th>
+                    <th>还款需求个数</th>
+                    <th>还款融资金额（亿元）</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr>-->
+                    <!--<td>企业1</td>-->
+                    <!--<td>福州市</td>-->
+                    <!--<td>XX县</td>-->
+                    <!--<td>20</td>-->
+                    <!--<td>50</td>-->
+                    <!--<td>30</td>-->
+                    <!--<td>60</td>-->
+                    <!--<td>40</td>-->
+                    <!--<td>70</td>-->
+                    <!--<td>50</td>-->
+                    <!--<td>80</td>-->
+                <!--</tr>-->
+            </tbody>
+        </table>
+        <div id="kkpager"></div>
+    </div>
+
+
+</div>
+<script src="../js/framework/jquery.min.js"></script>
+<script src="../js/framework/bootstrap.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/plugin/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../js/plugin/kkpager.min.js"></script>
+<script src="../js/common.js"></script>
+
+
+
+<script>
+
+    $(document).ready(function(){
+        //初始化日期插件
+        dataPiker();
+
+        //查询成功执行方法
+        var successFun = function(data,postData){
+            alert(JSON.stringify(data));
+            requestObj.searchObj.totalPage =  data.body.totalPageNo;//总页码
+            requestObj.searchObj.recordsTotal = data.body.totalCount;//总记录数目
+            requestObj.initPager(
+                    requestObj.address.zfbmAreaCount,
+                    successFun
+            );
+
+            //更新列表
+            $(".search_result tbody").empty();
+            for(var i = 0 ; i < data.body.data.length ; i ++ ){
+                $(".search_result tbody").append(
+                        "<tr><td>" + data.body.data[i].sssq + "</td>" +
+                        "<td>" + data.body.data[i].ssxq + "</td>" +
+                        "<td>" + data.body.data[i].zcqysl + "</td>" +
+                        "<td>" + data.body.data[i].fbxqgs + "</td>" +
+                        "<td>" + data.body.data[i].sqrzje + "</td>" +
+                        "<td>" + data.body.data[i].sxxqgs + "</td>" +
+                        "<td>" + data.body.data[i].sxrzje + "</td>" +
+                        "<td>" + data.body.data[i].fkxqgs + "</td>" +
+                        "<td>" + data.body.data[i].fkrzje + "</td>" +
+                        "<td>" + data.body.data[i].hkxqgs + "</td>" +
+                        "<td>" + data.body.data[i].hkrzje + "</td>" +
+                        "</tr>"
+                )
+            }
+        };
+
+        //进入页面默认查询数据
+        requestObj.searchServer(
+                requestObj.address.zfbmAreaCount,
+                "searchFrom",
+                successFun
+        );
+
+        //初始化市区数据
+        requestObj.initCity();
+
+        //给查询按钮绑定查询事件
+        $("#searchBtn").click(function(){
+            requestObj.searchObj.postData.pageIndex = "1";
+            requestObj.searchServer(
+                    requestObj.address.zfbmAreaCount,
+                    "searchFrom",
+                    successFun
+            );
+        });
+
+    })
+
+</script>
+</body>
+</html>

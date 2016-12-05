@@ -1,0 +1,12 @@
+{
+  "enterprise":
+        [
+          {"menuId":"entIssueRequest","menuType":"issue","menuText":"发布需求","childMenu":[]},
+          {"menuId":"entMyRequest","menuType":"request","menuText":"我的需求","childMenu":[]},
+          {"menuId":"entProductSearch","menuType":"search","menuText":"金融产品查询","childMenu":[]},
+          {"menuId":"entEnterpriseInfo","menuType":"info","menuText":"企业信息","childMenu":[
+            {"menuId":"entEditInfo","menuType":"issue","menuText":"企业信息修改"},
+            {"menuId":"entEditPwd","menuType":"issue","menuText":"密码修改"}
+          ]}
+        ]
+}

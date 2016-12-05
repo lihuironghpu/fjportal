@@ -1,0 +1,82 @@
+.center_main{
+    border: 1px solid #ccc;
+    border-top: none 0;
+    margin-bottom: 30px;
+}
+.left_menu{
+    border-right: 1px solid #ddd;
+    height: 500px;
+}
+.panel-heading{
+    cursor: pointer;
+}
+/*重置bootstrap的面板和列表组样式  左侧菜单*/
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus{
+    background-color: #139761;
+    border-color: #139761;
+}
+.left_menu_box{
+    padding: 0;
+    border-right: 1px solid #ddd;
+    height: 800px;
+}
+.left_menu_box .panel{
+    margin-bottom: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none 0;
+    border-radius: 0;
+}
+.left_menu_box .panel-heading{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    cursor: pointer;
+}
+.left_menu_box .list-group{
+    margin-bottom: 0;
+}
+.left_menu_box .list-group-item{
+    border-left: none;
+    border-right: none;
+    cursor: pointer;
+}
+.left_menu_box .list-group-item:first-child{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.left_menu_box .list-group-item:last-child{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+/*重置bootstrap的面板和列表组样式  左侧菜单 end*/
+
+/*重置bootstrap的表格样式 个人中心表单*/
+.center_content_box{
+    padding: 10px 0;
+}
+.control-label {
+    padding-right: 0;
+}
+
+
+/*查询条件样式*/
+.search_input{
+    border: 1px solid #ddd;
+    margin: -10px 0 20px 0;
+    padding: 20px 0;
+}
+.search_input .form-group{
+    margin-bottom: 10px;
+}
+/*查询条件 end*/
+.form_add{
+    border: 1px solid #ccc;
+    padding: 20px 0;
+}
+.panel-body .form_add{
+    border: none 0;
+}
+.top_btn_container {
+    padding-bottom: 20px;
+    text-align: right;
+}
